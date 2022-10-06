@@ -1,4 +1,4 @@
-// Include the AccelStepper Library
+// Include the AccelStepper Library, need to install this arduino module on your editor 1st
 #include <AccelStepper.h>
 
 // Define pin connections
