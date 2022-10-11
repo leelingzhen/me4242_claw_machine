@@ -1,7 +1,4 @@
-// Include the AccelStepper Library, need to install this arduino module on your editor 1st
-/** 
-* Joystick Range: 0 to 1023 in each direction. Centre for some reason is 507, 515, needs to be calibrated
-*/
+// Include the AccelStepper Library
 #include <AccelStepper.h>
 
 // Define pin connections
@@ -22,27 +19,26 @@ void setup() {
   // set the maximum speed, acceleration factor,
   // initial speed and the target position
   myStepper.setMaxSpeed(600);
-  myStepper.setAcceleration(50);
+  // myStepper.setAcceleration(50);
   myStepper.setSpeed(200);
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop() {
   xValue = analogRead(VRx);
   yValue = analogRead(VRy);
   Serial.print(xValue);
-  Serial.print(" , ");
+  Serial.print("\t");
   Serial.print(yValue);
-  Serial.println("");
-  if (xValue > 450 or xValue < 580) {
-    myStepper.setSpeed(0);
-    myStepper.runSpeed();
-  }
-  else {
+  Serial.print("\t");
   xMap = map(xValue,0,1023,-3,3);
   yMap = map(yValue,0,1023,-3,3);
+  if (xMap == 1 or xMap == -1) {
+    xMap=0;
+  }
   // Move the motor one step
   myStepper.setSpeed(200*xMap);
-  myStepper.runSpeed();  
-  }
+  myStepper.runSpeed();
+  Serial.print('2');
+  Serial.print("\t");
 }
