@@ -1,6 +1,7 @@
 // Include the AccelStepper Library
 #include <AccelStepper.h>
-
+// Adjust based on the steps movement
+// Button must kill the joystick
 // Define pin connections
 AccelStepper myStepper(1, 7, 6);
 const int VRx = A8;
@@ -42,3 +43,12 @@ void loop() {
   Serial.print('2');
   Serial.print("\t");
 }
+
+/*
+- Coin input
+- Limit switch (to kill in each direction)
+- Servo motor (scissor mechanism)
+- Stepper Motor - arm up and down (done)
+- Fluidic Interface with other arduino (done)
+- Button press flow: reading the button input, send to fluidic board to grab, servo up, motor going to home position
+*/
