@@ -22,26 +22,11 @@ Servo servo_arm;
 const int SIGNAL_PIN = 8;
 const int SERVO_PIN = 9;
 const int BUTTON_PIN = 10;
-// Joystick Controls
-const int VRx = A8;
-const int VRy = A9;
-const int SW = 5;
 
 //servo settings
 const int servo_step_delay = 10;
 const int retract_angle = 100; //90 will be max, completely horizontal
 const int extend_angle = 170;// 180 will be max, completely vertical
-
-
-
-
-// void arm_extend(Servo servo) {
-//   int servo_pos = retract_angle;
-//   for (int i = 0; i <=extend_angle - retract_angle; i++) {
-//     servo.write(servo_pos + i);
-//     delay(servo_step_delay);
-//   }
-// }
 
 void setup() {
   // set the maximum speed, acceleration factor,
@@ -61,7 +46,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   // arm_extend(servo_arm);
-  // arm_retract(servo_arm);
   arm_retract(servo_arm, extend_angle, retract_angle, servo_step_delay);
   stepperMotors.moveMotor(200);
 }

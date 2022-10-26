@@ -2,12 +2,8 @@
 #include <AccelStepper.h>
 #include "StepperManager.h"
 
-StepperManager::StepperManager(int xMotorInterface, int xMotorPin1, int xMotorPin2, int yMotorInterface, int yMotorPin1, int yMotorPin2, int joystickXPin, int joystickYPin, int joystickSwitchPin){
-  _xMotor = AccelStepper(xMotorInterface, xMotorPin1, xMotorPin2);
-  _yMotor = AccelStepper(yMotorInterface, yMotorPin1, yMotorPin2);
-  _joystickXPin = joystickXPin;
-  _joystickYPin = joystickYPin;
-  _joystickSwitchPin = joystickSwitchPin;
+StepperManager::StepperManager(int xMotorInterface, int xMotorPin1, int xMotorPin2, int yMotorInterface, int yMotorPin1, int yMotorPin2, int joystickXPin, int joystickYPin, int joystickSwitchPin) 
+: _xMotor(xMotorInterface, xMotorPin1, xMotorPin2), _yMotor(yMotorInterface, yMotorPin1, yMotorPin2), _joystickXPin(joystickXPin), _joystickYPin(joystickYPin), _joystickSwitchPin(joystickSwitchPin) {
 }
 
 void StepperManager::motorSetup(){
