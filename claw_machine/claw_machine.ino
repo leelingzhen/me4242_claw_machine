@@ -46,7 +46,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   // arm_extend(servo_arm);
-  arm_retract(servo_arm, extend_angle, retract_angle, servo_step_delay);
+//  arm_retract(servo_arm, extend_angle, retract_angle, servo_step_delay);
   stepperMotors.moveMotor(200);
 }
 
@@ -86,6 +86,3 @@ void claw_actuate(int signal) {
 //to close or open the claw of the machine
   digitalWrite(SIGNAL_PIN, signal);
 }
-
-
-
