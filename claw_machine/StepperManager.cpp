@@ -32,7 +32,9 @@ int* StepperManager::readJoystick(){
   if (yMap == 1 or yMap == -1) {
     yMap=0;
   }
-  int returnList[] = {xMap, yMap};
+  static int returnList[2];
+  returnList[0] = xMap;
+  returnList[1] = yMap;
   return returnList;
 }
 
