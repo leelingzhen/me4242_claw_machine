@@ -39,15 +39,12 @@ void setup() {
 
   //servo setup
   servo_arm.attach(SERVO_PIN);
-  //init pos, retracted position
-  servo_arm.write(retract_angle);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  // arm_extend(servo_arm);
-//  arm_retract(servo_arm, extend_angle, retract_angle, servo_step_delay);
   stepperMotors.moveMotor(200);
+  
 }
 
 
@@ -84,5 +81,13 @@ int player_button(){
 
 void claw_actuate(int signal) {
 //to close or open the claw of the machine
+//send a signal of HIGH to close the claw and a signal of LOW to release the claww
   digitalWrite(SIGNAL_PIN, signal);
 }
+
+void claw_move_height(Servo servo, int direction , int duration = 1000, int stop = 1440){
+  servo.writeMicroseconds(direction);
+  delay(1000);
+  servo.writeMiroseconds(stop);
+}
+
