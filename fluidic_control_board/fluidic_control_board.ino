@@ -17,7 +17,7 @@
 
 //User Variables
 int PRESSURE[4] ={0};
-int pump_signal = 0;
+int pump_signal = 1;
 
 void setup() {
   Serial.begin(115200);
@@ -30,15 +30,38 @@ void setup() {
   VALVE_OFF(VALVE_CTRL_1);
   VALVE_OFF(VALVE_CTRL_2);
   VALVE_OFF(VALVE_CTRL_3);
-  PUMP_OFF;
+  PUMP_ON;
 
   //signal pin to be communicated by other arduino
   pinMode(SIGNAL_PIN,INPUT);
 }
 
 void loop() {
-  pump_signal = digitalRead(SIGNAL_PIN);
-  digitalWrite(PUMP_CTRL, pump_signal);
+  //pump_signal = digitalRead(SIGNAL_PIN);
+  //digitalWrite(PUMP_CTRL, pump_signal);
+
+  if (pump_signal == 1){
+    CLAW_GRIP();
+    pump_signal = 0;
+    }
+  delay(3000);
+  CLAW_RELEASE();
+  
+  
+}
+
+void CLAW_GRIP() {
+  PUMP_ON;
+  VALVE_ON(VALVE_CTRL_0);
+  delay(1000);
+  VALVE_OFF(VALVE_CTRL_0);
+  delay(600);
+  PUMP_OFF;
+}
+
+void CLAW_RELEASE() {
+  VALVE_ON(VALVE_CTRL_0);
+  delay(1000);
 }
 
 void VALVE_ON(byte VALVE_INDEX){
