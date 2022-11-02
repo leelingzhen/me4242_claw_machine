@@ -32,14 +32,13 @@ void claw_move_height(Servo servo, int direction , int duration = 1000){
 void grab_item_flow(Servo servo){
   claw_move_height(servo_arm, 1000, 3000); // Move claw down
   claw_move_height(servo_arm, 1430, 3000); // Stop the claw
-  // Gripper CODE HERE:
-
-  // Gripper CODE END
+  digitalWrite(SIGNAL_PIN, 1); // gripper grab
   claw_move_height(servo_arm, 2000, 3000); // Move claw up
   stepperMotors.moveMotor(200, 0);
   delay(4000);
   stepperMotors.moveMotor(0, 200);
   delay(4000);
+  digitalWrite(SIGNAL_PIN, 0); // griper release
   buttonPressed = true; // so that the sequence runs only once
 }
 
