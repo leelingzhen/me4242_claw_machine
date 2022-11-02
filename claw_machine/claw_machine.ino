@@ -18,13 +18,14 @@ void arm_retract(Servo servo, int extend_angle, int retract_angle, int servo_ste
 // Button must kill the joystick
 // Define pin connections
 // 2 inputs: step and direction
-StepperManager stepperMotors(1, 7, 6, 1, 3, 4, A8, A9, 5);
+StepperManager stepperMotors(1, 7, 6, 1, 2, 3, A8, A9, 5);
 
 Servo servo_arm;
 // Servo Controls
 const int SIGNAL_PIN = 8;
 const int SERVO_PIN = 9;
-const int BUTTON_PIN = 10;
+// const int BUTTON_PIN = 10;
+const int BUTTON_PIN = 5;
 
 // To be reset when coin is input
 bool buttonPressed = false;
