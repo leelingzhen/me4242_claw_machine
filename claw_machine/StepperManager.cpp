@@ -38,12 +38,25 @@ int* StepperManager::readJoystick(){
   return returnList;
 }
 
-void StepperManager::moveMotor(int multiplierX, int multiplierY){
-  int* joystickValues = readJoystick();
-  _xMotor.setSpeed(multiplierX*joystickValues[0]);
-  _xMotor.runSpeed();
-  _yMotor.setSpeed(multiplierY*joystickValues[1]);
-  _yMotor.runSpeed();
+void StepperManager::moveMotor(int multiplierX, int multiplierY, bool shouldReadJoystick = true){
+  if(shouldReadJoystick){
+    int* joystickValues = readJoystick();
+    Serial.print("joystick: ");
+    Serial.print(joystickValues[0]);
+    Serial.println(joystickValues[1]);
+    _xMotor.setSpeed(multiplierX*joystickValues[0]);
+    // Serial.print("motorSpeed: ");
+    // Serial.print(multiplierX*joystickValues[0]);
+    _xMotor.runSpeed();
+    _yMotor.setSpeed(multiplierY*joystickValues[1]);
+    // Serial.print(multiplierY*joystickValues[1]);
+    _yMotor.runSpeed();
+  } else{
+    _xMotor.setSpeed(multiplierX);
+    _xMotor.runSpeed();
+    _yMotor.setSpeed(multiplierY);
+    _yMotor.runSpeed();
+  }
 }
 
 void StepperManager::moveMotor(int multiplier){
