@@ -17,7 +17,7 @@ class StepperManager {
         void motorSetup();
         void motorSetup(int maxSpeed, int currentSpeed);
         void motorSetup(int maxSpeedX, int currentSpeedX, int maxSpeedY, int currentSpeedY);
-        void moveMotor(int multiplierX, int multiplierY);
+        void moveMotor(int multiplierX, int multiplierY, bool shouldReadJoystick=true);
         void moveMotor(int multiplier);
 
   private:
