@@ -54,10 +54,11 @@ void loop() {
 }
 
 void CLAW_GRIP() {
+  Serial.println("claw grip");
   PUMP_ON;
   //this part of the code may not be needed 
-  VALVE_ON(VALVE_CTRL_0);
-  delay(1000);
+  //VALVE_ON(VALVE_CTRL_0);
+  //delay(1000);
   //until here
   VALVE_OFF(VALVE_CTRL_0);
   delay(600);
@@ -65,6 +66,7 @@ void CLAW_GRIP() {
 }
 
 void CLAW_RELEASE() {
+  Serial.println("claw_release");
   VALVE_ON(VALVE_CTRL_0);
   delay(1000);
 }
